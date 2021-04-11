@@ -12,54 +12,25 @@
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     </head>
     <body>
-        <div class="mr-1" style="position: relative">
-            <div style="position: absolute; top: 0; right: 0">
-              <div
-                id="liveToast"
-                class="toast success hide"
-                role="alert"
-                aria-live="assertive"
-                aria-atomic="true"
-                data-delay="4000"
-              >
-                <div>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="toast"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="toast-body">Listeye eklendi.</div>
-              </div>
-            </div>
-          </div>
-          <div class="mr-1" style="position: relative">
-            <div style="position: absolute; top: 0; right: 0">
-              <div
-                id="liveToast"
-                class="toast error hide"
-                role="alert"
-                aria-live="assertive"
-                aria-atomic="true"
-                data-delay="4000"
-              >
-                <div>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="toast"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="toast-body">Listeye boş ekleme yapamazsınız!</div>
-              </div>
-            </div>
-          </div>
+      <script src="script.js"></script>
+      <!-- Toast -->
+      <div class="toast success" style="position: absolute; top: 10; right: 10; z-index: 100;">
+        <div class="toast-header bg-success text-white">
+          Success
+        </div>
+        <div class="toast-body">
+          Success to Add To-Do
+        </div>
+      </div>
+      <div class="toast failed" style="position: absolute; top: 10; right: 10; z-index: 100;">
+        <div class="toast-header bg-danger text-white">
+          Failed
+        </div>
+        <div class="toast-body">
+          Failed to Add To-Do
+        </div>
+      </div>
+      <!-- Body -->
         <div class="container">
             <div class="row d-flex justify-content-around mt-3">
                 <div class="card">
@@ -70,18 +41,16 @@
                     <form>
                         <div class="input-group mt-3 mb-3">
                             <div class="input-group-prepend">
-                                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
-                                Category
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Personel</a>
-                                    <a class="dropdown-item" href="#">Work</a>
-                                    <a class="dropdown-item" href="#">School</a>
-                                </div>
+                                <select id="newToDoCategory" class="custom-select">
+                                <option selected>Category</option>
+                                <option value="Personel">Personel</option>
+                                <option value="Work">Work</option>
+                                <option value="School">School</option>
+                                </select>
                             </div>
-                            <input type="text" class="form-control" placeholder="Text">
+                            <input type="text" class="form-control" placeholder="To-Do Item" id="newToDoValue">
                             <div class="input-group-append">
-                                <button class="btn btn-success" type="submit">Add</button>
+                                <button class="btn btn-success" type="submit" onclick="addToDo()">Add</button>
                             </div>
                         </div>
                     </form>
@@ -92,46 +61,44 @@
                     <div class="card-body">
                         <form>
                         <div class="input-group mt-3 mb-3">
-                            <input type="text" class="form-control" placeholder="Category Name">
+                            <input type="text" class="form-control" placeholder="Category Name" id="newCategoryValue">
                             <div class="input-group-append">
-                                <button class="btn btn-success" type="submit">Add</button>
+                                <button class="btn btn-success" type="submit" onclick="newCategory()">Add</button>
                             </div>
                         </div>
                         <div class="input-group mt-3 mb-3">
                             <div class="input-group-prepend flex-100">
-                              <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown w-100 text-left" data-toggle="dropdown">
-                                Category Name
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Personel</a>
-                                <a class="dropdown-item" href="#">Work</a>
-                                <a class="dropdown-item" href="#">School</a>
+                                <select class="custom-select" id="selectCategory">
+                                  <option selected>Category</option>
+                                  <option value="Personel">Personel</option>
+                                  <option value="Work">Work</option>
+                                  <option value="School">School</option>
+                                  </select>
                               </div>
-                            </div>
                             <div class="input-group-append">
-                                <button class="btn btn-danger" type="submit">Remove</button>
+                                <button class="btn btn-danger" type="submit" onclick="removeCategory()">Remove</button>
                             </div>
                         </div>
                         </form>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header">To-Do</div>
-                    <div class="card-body">
-                        <ul class="list-group">
+                    <div class="card-header">To-Do List</div>
+                    <div class="card-body" id="category-list">
+                        <ul class="list-group" id="Personel-category">
                             <li class="list-group-item list-group-item-info">Personel</li>
-                            <li class="list-group-item">Second item <i class="fas fa-times mt-1" style="float: right"></i></li>
-                            <li class="list-group-item">Third item<i class="fas fa-times mt-1" style="float: right"></i></li>
+                            <li class="list-group-item">First item <i class="fas fa-times mt-1" style="float: right" onclick="removeToDO(this)"></i></li>
+                            <li class="list-group-item">Second item<i class="fas fa-times mt-1" style="float: right" onclick="removeToDO(this)"></i></li>
                           </ul>
-                          <ul class="list-group">
+                          <ul class="list-group" id="Work-category">
                             <li class="list-group-item list-group-item-info">Work</li>
-                            <li class="list-group-item">Second item<i class="fas fa-times mt-1" style="float: right"></i></li>
-                            <li class="list-group-item">Third item<i class="fas fa-times mt-1" style="float: right"></i></li>
+                            <li class="list-group-item">First item<i class="fas fa-times mt-1" style="float: right" onclick="removeToDO(this)"></i></li>
+                            <li class="list-group-item">Second item<i class="fas fa-times mt-1" style="float: right" onclick="removeToDO(this)"></i></li>
                           </ul>
-                          <ul class="list-group">
+                          <ul class="list-group" id="School-category">
                             <li class="list-group-item list-group-item-info">School</li>
-                            <li class="list-group-item">Second item<i class="fas fa-times mt-1" style="float: right"></i></li>
-                            <li class="list-group-item">Third item<i class="fas fa-times mt-1" style="float: right"></i></li>
+                            <li class="list-group-item">First item<i class="fas fa-times mt-1" style="float: right" onclick="removeToDO(this)"></i></li>
+                            <li class="list-group-item">Second item<i class="fas fa-times mt-1" style="float: right" onclick="removeToDO(this)"></i></li>
                           </ul>
                     </div>
                 </div>
