@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <title>To-Do-App</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="mr-1" style="position: relative">
+            <div style="position: absolute; top: 0; right: 0">
+              <div
+                id="liveToast"
+                class="toast success hide"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+                data-delay="4000"
+              >
+                <div>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="toast"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="toast-body">Listeye eklendi.</div>
+              </div>
+            </div>
+          </div>
+          <div class="mr-1" style="position: relative">
+            <div style="position: absolute; top: 0; right: 0">
+              <div
+                id="liveToast"
+                class="toast error hide"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+                data-delay="4000"
+              >
+                <div>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="toast"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="toast-body">Listeye boş ekleme yapamazsınız!</div>
+              </div>
+            </div>
+          </div>
+        <div class="container">
+            <div class="row d-flex justify-content-around mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="addheader">Add To-Do</div>
+                    </div>
+                    <div class="card-body">
+                    <form>
+                        <div class="input-group mt-3 mb-3">
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+                                Category
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Personel</a>
+                                    <a class="dropdown-item" href="#">Work</a>
+                                    <a class="dropdown-item" href="#">School</a>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Text">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit">Add</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                    <div class="card-header">
+                        <div class="addheader">Add/Remove Category</div>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                        <div class="input-group mt-3 mb-3">
+                            <input type="text" class="form-control" placeholder="Category Name">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="submit">Add</button>
+                            </div>
+                        </div>
+                        <div class="input-group mt-3 mb-3">
+                            <div class="input-group-prepend flex-100">
+                              <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown w-100 text-left" data-toggle="dropdown">
+                                Category Name
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Personel</a>
+                                <a class="dropdown-item" href="#">Work</a>
+                                <a class="dropdown-item" href="#">School</a>
+                              </div>
+                            </div>
+                            <div class="input-group-append">
+                                <button class="btn btn-danger" type="submit">Remove</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">To-Do</div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-info">Personel</li>
+                            <li class="list-group-item">Second item <i class="fas fa-times mt-1" style="float: right"></i></li>
+                            <li class="list-group-item">Third item<i class="fas fa-times mt-1" style="float: right"></i></li>
+                          </ul>
+                          <ul class="list-group">
+                            <li class="list-group-item list-group-item-info">Work</li>
+                            <li class="list-group-item">Second item<i class="fas fa-times mt-1" style="float: right"></i></li>
+                            <li class="list-group-item">Third item<i class="fas fa-times mt-1" style="float: right"></i></li>
+                          </ul>
+                          <ul class="list-group">
+                            <li class="list-group-item list-group-item-info">School</li>
+                            <li class="list-group-item">Second item<i class="fas fa-times mt-1" style="float: right"></i></li>
+                            <li class="list-group-item">Third item<i class="fas fa-times mt-1" style="float: right"></i></li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

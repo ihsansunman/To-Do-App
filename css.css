@@ -1,0 +1,15 @@
+.card{
+    width: 45%;
+}
+
+.card-header{
+    font-size: 24px;
+}
+
+.fas{
+    margin-left: auto;
+}
+
+.flex-100 {
+    flex: 1 1 auto;
+}
